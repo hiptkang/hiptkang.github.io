@@ -1,4 +1,7 @@
 
+.page-header {
+    background-image: linear-gradient(120deg, #305050, #159957) !important;
+}
 .site-footer {
     /* visibility: hidden; */
 }

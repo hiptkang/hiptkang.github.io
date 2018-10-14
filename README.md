@@ -1,19 +1,16 @@
 # H.S. Kang
 
-## my working tags
+## working tags
 
-```txt
-#software engineer #machine learning #data science
-```
+- [#software engineer]() [#machine learning]() [#data science]()
 
-## my favorites tags
 
-```txt
-#hj-yj 
-```
+## favorites tags
 
-## my invariant tags
+- [#hj-yj]()
 
-```txt
-#man #son #father
-```
+
+## invariant tags
+
+- [#man]() [#son]() [#father]()
+
