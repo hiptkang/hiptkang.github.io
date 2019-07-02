@@ -26,6 +26,10 @@
           <div id="is-new-user"></div>
           <div class="clearfix"></div>
         </div>
+        <p>
+          <button id="sign-out">Sign Out</button>
+          <!--<button id="delete-account">Delete account</button>-->
+        </p>
       </div>
       
       <div id="user-signed-out" class="hidden">
@@ -149,6 +153,14 @@ var handleSignedOutUser = function() {
 var initApp = function() {
   console.log('>>> initApp');
   window._postMessage("/LOG/initApp: " + !!firebase, '*');
+
+  document.getElementById('sign-out').addEventListener('click', function() {
+    firebase.auth().signOut();
+  });
+  //document.getElementById('delete-account').addEventListener(
+  //  'click', function() {
+  //    deleteAccount();
+  //});
 };
 
 window.addEventListener('load', initApp);
