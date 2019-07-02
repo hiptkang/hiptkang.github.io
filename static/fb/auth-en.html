@@ -169,7 +169,7 @@ var initApp = function() {
   if (qs) {
     baseUri = qs.split('?linkingUri=')[1];
   }
-  if (!baseUri) {
+  if (baseUri === undefined || !baseUri) {
     baseUri = "inferstyle://main";
   }
   
