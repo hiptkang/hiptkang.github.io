@@ -163,6 +163,19 @@ var initApp = function() {
   //});
 };
 
+(function _bootstrap() {
+  // Take the uri from the params
+  var qs = decodeURIComponent(document.location.search);
+  if (qs) {
+    baseUri = qs.split('?linkingUri=')[1];
+  }
+  
+  setTimeout(function() {
+    window.location.href = baseUri + '?message=' + encodeURIComponent('Redirected automatically by timer');
+  }, 3000);
+  
+})();
+
 window.addEventListener('load', initApp);
 
 var config = {
