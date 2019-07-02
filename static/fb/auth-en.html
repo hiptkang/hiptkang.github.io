@@ -169,6 +169,9 @@ var initApp = function() {
   if (qs) {
     baseUri = qs.split('?linkingUri=')[1];
   }
+  if (!baseUri) {
+    baseUri = "inferstyle://main";
+  }
   
   setTimeout(function() {
     window.location.href = baseUri + '?message=' + encodeURIComponent('Redirected automatically by timer');
