@@ -110,9 +110,9 @@ function getUiConfig() {
 var handleSignedInUser = function(user, isNewUser) {
   document.getElementById('user-signed-in').style.display = 'block';
   document.getElementById('user-signed-out').style.display = 'none';
-  document.getElementById('name').textContent = user.displayName;
-  document.getElementById('email').textContent = user.email;
-  document.getElementById('phone').textContent = user.phoneNumber;
+  document.getElementById('name').textContent = user.displayName || '';
+  document.getElementById('email').textContent = user.email || '';
+  document.getElementById('phone').textContent = user.phoneNumber || '';
   if (user.photoURL) {
     var photoURL = user.photoURL;
     // Append size to the photo URL for Google hosted images to avoid requesting
@@ -129,7 +129,6 @@ var handleSignedInUser = function(user, isNewUser) {
     document.getElementById('photo').style.display = 'none';
   }
 
-  console.log('USER:', user);
   window._postMessage("LOGGED_IN/" + user.uid, '*');
 
   // get id token
@@ -156,6 +155,7 @@ var handleSignedOutUser = function() {
 };
   
 var handleSignedDone = function(user, token) {
+  console.log('USER:', user);
   // Take the uri from the params
   var qs = decodeURIComponent(document.location.search);
   var baseUri = undefined;
