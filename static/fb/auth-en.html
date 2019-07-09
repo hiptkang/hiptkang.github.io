@@ -128,13 +128,20 @@ var handleSignedInUser = function(user, isNewUser) {
     document.getElementById('photo').style.display = 'none';
   }
 
-  console.log(user);
+  console.log('USER:', user);
   window._postMessage("LOGGED_IN/" + user.uid, '*');
 
-  // sign-out 
-  //firebase.auth().signOut().then(function() {
-  //  window._postMessage("/LOGGED_IN/" + user.uid, '*');
-  //});
+  // get id token
+  user.getIdToken()
+  .then(function(token) {
+    return handleSignedDone(user, token);
+  })
+  .catch(function(e) {
+    // sign-out 
+    firebase.auth().signOut().then(function() {
+      window._postMessage("/LOGGED_IN/" + user.uid, '*');
+    });
+  });
 };
 
 /**
@@ -146,6 +153,25 @@ var handleSignedOutUser = function() {
   ui.start('#firebaseui-container', getUiConfig());
   window._postMessage("/LOGGED_OUT/", '*');
 };
+  
+var handleSignedDone = function(user, token) {
+  // Take the uri from the params
+  var qs = decodeURIComponent(document.location.search);
+  if (qs) {
+    baseUri = qs.split('?linkingUri=')[1];
+  }
+  if (baseUri === undefined || !baseUri) {
+    console.log("no base uri");
+    return;
+    //baseUri = "inferstyle://main";
+  }
+  console.log('base uri', baseUri);
+  
+  setTimeout(function() {
+    alert(baseUri);
+    window.location.href = baseUri + '?message=' + encodeURIComponent(token + '/' + JSON.stringify(user));
+  }, 1000);
+}
 
 /**
  * Initializes the app.
@@ -173,10 +199,10 @@ var initApp = function() {
     baseUri = "inferstyle://main";
   }
   
-  setTimeout(function() {
-    alert(baseUri);
-    window.location.href = baseUri + '?message=' + encodeURIComponent('Redirected automatically by timer');
-  }, 3000);
+  //setTimeout(function() {
+  //  alert(baseUri);
+  //  window.location.href = baseUri + '?message=' + encodeURIComponent('Redirected automatically by timer');
+  //}, 3000);
   
 })();
 
