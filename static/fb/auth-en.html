@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1.00001,viewport-fit=cover">
 
-<script src="https://www.gstatic.com/firebasejs/6.0.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-auth.js"></script>
 <script src="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.js"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.css" />
 <style> body { margin: 0; } </style>
@@ -157,6 +157,7 @@ var handleSignedOutUser = function() {
 var handleSignedDone = function(user, token) {
   // Take the uri from the params
   var qs = decodeURIComponent(document.location.search);
+  var baseUri = undefined;
   if (qs) {
     baseUri = qs.split('?linkingUri=')[1];
   }
@@ -192,6 +193,7 @@ var initApp = function() {
 (function _bootstrap() {
   // Take the uri from the params
   var qs = decodeURIComponent(document.location.search);
+  var baseUri = undefined;
   if (qs) {
     baseUri = qs.split('?linkingUri=')[1];
   }
