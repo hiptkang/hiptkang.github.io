@@ -12,19 +12,58 @@
 
 <div id="container">
   <h3>Path TEST</h3>
-  <p><a href="inferstyle://">inferstyle://</a></p>
-  <p><a href="inferstyle://auth">inferstyle://auth</a></p>
-  <p><a href="inferstyle://auth/login">inferstyle://auth/login</a></p>
-  <p><a href="inferstyle://main">inferstyle://main</a></p>
-  <p><a href="inferstyle://main/home">inferstyle://main/home</a></p>
-  <p><a href="inferstyle://main/about">inferstyle://main/about</a></p>
+  <p>
+    <a href="#" onclick="redirect_deeplink(event);return false;">inferstyle://</a> | 
+    <a href="inferstyle://">link</a>
+  </p>
+  <p>
+    <a href="#" onclick="redirect_deeplink(event);return false;">inferstyle://auth</a> | 
+    <a href="inferstyle://auth">link</a>
+  </p>
+  <p>
+    <a href="#" onclick="redirect_deeplink(event);return false;">inferstyle://auth/login</a> | 
+    <a href="inferstyle://auth/login">link</a>
+  </p>
+  <p>
+    <a href="#" onclick="redirect_deeplink(event);return false;">inferstyle://main</a> | 
+    <a href="inferstyle://main">link</a>
+  </p>
+  <p>
+    <a href="#" onclick="redirect_deeplink(event);return false;">inferstyle://main/home</a> | 
+    <a href="inferstyle://main/home">link</a>
+  </p>
+  <p>
+    <a href="#" onclick="redirect_deeplink(event);return false;">inferstyle://main/about</a> | 
+    <a href="inferstyle://main/about">link</a>
+  </p>
 
   <h3>Param TEST</h3>
-  <p><a href="inferstyle://?k1=v1&k2=v2">inferstyle://?k1=v1&k2=v2</a></p>
-  <p><a href="inferstyle://auth?k1=v1&k2=v2">inferstyle://auth?k1=v1&k2=v2</a></p>
-  <p><a href="inferstyle://main?k1=v1&k2=v2">inferstyle://main?k1=v1&k2=v2</a></p>
-  <p><a href="inferstyle://main/home?k1=v1&k2=v2">inferstyle://main/home?k1=v1&k2=v2</a></p>
-  
+  <p>
+    <a href="#" onclick="redirect_deeplink(event);return false;">inferstyle://?k1=v1&k2=v2</a> | 
+    <a href="inferstyle://?k1=v1&k2=v2">link</a>
+  </p>
+  <p>
+    <a href="#" onclick="redirect_deeplink(event);return false;">inferstyle://auth?k1=v1&k2=v2</a> | 
+    <a href="inferstyle://auth?k1=v1&k2=v2">link</a>
+  </p>
+  <p>
+    <a href="#" onclick="redirect_deeplink(event);return false;">inferstyle://main?k1=v1&k2=v2</a> | 
+    <a href="inferstyle://main?k1=v1&k2=v2">link</a>
+  </p>
+  <p>
+    <!-- redirect -->
+    <a href="#" onclick="redirect_deeplink(event);return false;">inferstyle://main/home?k1=v1&k2=v2</a> | 
+    <!-- link -->
+    <a href="inferstyle://main/home?k1=v1&k2=v2">link</a>
+  </p>
+
 </div>
+<script>
+function redirect_deeplink(e) {
+  var src = e.target || e.srcElement;
+  alert(src.text);
+  window.location = src.text;
+}
+</script>
 </body>
 </html>
