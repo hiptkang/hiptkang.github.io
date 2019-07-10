@@ -74,11 +74,13 @@ function getUiConfig() {
           handleSignedInUser(authResult.user, (authResult.additionalUserInfo && authResult.additionalUserInfo.isNewUser));
         }
         // Do not redirect.
-        return false;
+        // return false;
+        
+        return true;
       }
     },
     // Opens IDP Providers sign-in flow in a popup. (or redirect)
-    'signInFlow': 'redirect',
+    'signInFlow': 'redirect', // popup, redirect
     'signInOptions': [
       {
         provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -95,9 +97,9 @@ function getUiConfig() {
       },
     ],
     // Terms of service url.
-    'tosUrl': 'https://www.mysite.com',
+    'tosUrl': 'https://www.aistyler.com',
     // Privacy policy url.
-    'privacyPolicyUrl': 'https://www.mysite.com',
+    'privacyPolicyUrl': 'https://www.aistyler.com',
     'credentialHelper': CLIENT_ID && CLIENT_ID != 'YOUR_OAUTH_CLIENT_ID' ?
         firebaseui.auth.CredentialHelper.GOOGLE_YOLO :
         firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM
