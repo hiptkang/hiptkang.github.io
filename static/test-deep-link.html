@@ -59,6 +59,7 @@
 
   <h3>Navi TEST</h3>
   <p><a href="https://google.com"> Google </a></p>
+  <p><a href="javascript:redirect_url('https://google.com');"> Redirect to Google </a></p>
   
 </div>
 <script>
@@ -66,6 +67,9 @@ function redirect_deeplink(e) {
   var src = e.target || e.srcElement;
   alert("redirect to " + src.text);
   window.location = src.text;
+}
+function redirect_url(url) {
+  window.location = url;
 }
 </script>
 </body>
