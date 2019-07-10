@@ -61,7 +61,7 @@
 <script>
 function redirect_deeplink(e) {
   var src = e.target || e.srcElement;
-  alert(src.text);
+  alert("redirect to " + src.text);
   window.location = src.text;
 }
 </script>
